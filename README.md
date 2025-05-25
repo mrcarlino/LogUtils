@@ -10,7 +10,7 @@ Built for simplicity, speed, and ease of use.
 - Preconfigured for use in VS Code
 
 ## Project Structure
-
+```
 LogUtils/
 ├── inc/
 ├── src/
@@ -18,6 +18,7 @@ LogUtils/
 ├── CMakeLists.txt
 ├── README.md
 └── .vscode/
+```
 
 ## Build Instructions
 
@@ -36,10 +37,11 @@ LogUtils/
 4. Press `F5` to run or debug
 
 ### Build with CLI
-
+```
 cmake -S . -B build -G Ninja
 cmake --build build
 ./build/LogUtils             # Or .exe on Windows
+```
 
 ## Notes
 
