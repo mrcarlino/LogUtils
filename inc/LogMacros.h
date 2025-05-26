@@ -2,8 +2,8 @@
 
 #include "LogStream.h"
 
-#define LOGD LogStream(LogLevel::DEBUG)
-#define LOGI LogStream(LogLevel::INFO)
-#define LOGW LogStream(LogLevel::WARNING)
-#define LOGE LogStream(LogLevel::ERROR)
-#define LOGF LogStream(LogLevel::FATAL)
+#define LOGD LogUtils::LogStream(LogLevel::DEBUG)
+#define LOGI LogUtils::LogStream(LogLevel::INFO)
+#define LOGW LogUtils::LogStream(LogLevel::WARNING)
+#define LOGE LogUtils::LogStream(LogLevel::ERROR)
+#define LOGF LogUtils::LogStream(LogLevel::FATAL)

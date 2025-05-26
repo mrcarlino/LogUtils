@@ -9,16 +9,14 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Create the library
-add_library(LogUtils src/LogUtils.cpp)
+add_library(LogUtils INTERFACE)
 
 # Add include directories
-target_include_directories(LogUtils PUBLIC inc)
+target_include_directories(LogUtils INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/inc)
 
 # Create the executable
 add_executable(${PROJECT_NAME}
-    tests/main.cpp
-    src/ThreadUtil.cpp
-    src/LogStream.cpp)
+    tests/main.cpp)
 
 # Link libraries to the executable
 target_link_libraries(${PROJECT_NAME} LogUtils)

@@ -16,7 +16,6 @@ A lightweight, header-based logging utility for C++ with color-coded output, thr
 ```
 LogUtils/
 ├── inc/
-├── src/
 ├── tests/
 ├── CMakeLists.txt
 ├── README.md

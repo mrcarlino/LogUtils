@@ -1,11 +1,11 @@
 #include <iostream>
 
 #include "LogUtils.h"
-#include "LogMacros.h"
 
 #include <thread>
 
 using std::string;
+using namespace LogUtils;
 
 void testThread(const string& msg)
 {
@@ -14,47 +14,47 @@ void testThread(const string& msg)
 
 int main()
 {
-    LogUtils::setLogLevel(LogLevel::DEBUG);
+    LogUtils::setSeverityLevel(LogLevel::DEBUG);
 
     // Integer
     int x = 11;
-    LOGD << "Debug value: " << x;
-    LOGI << "Info value: " << x;
-    LOGW << "Warning value: " << x;
-    LOGE << "Error value: " << x;
-    LOGF << "Fatal value: " << x;
+    LOGD << "int: " << x;
+    LOGI << "int: " << x;
+    LOGW << "int: " << x;
+    LOGE << "int: " << x;
+    LOGF << "int: " << x;
 
     // Float
     float f = 22.2;
-    LOGD << "Debug value: " << f;
-    LOGI << "Info value: " << f;
-    LOGW << "Warning value: " << f;
-    LOGE << "Error value: " << f;
-    LOGF << "Fatal value: " << f;
+    LOGD << "float: " << f;
+    LOGI << "float: " << f;
+    LOGW << "float: " << f;
+    LOGE << "float: " << f;
+    LOGF << "float: " << f;
 
     // Double
     double d = 33.3;
-    LOGD << "Debug value: " << d;
-    LOGI << "Info value: " << d;
-    LOGW << "Warning value: " << d;
-    LOGE << "Error value: " << d;
-    LOGF << "Fatal value: " << d;
+    LOGD << "double: " << d;
+    LOGI << "double: " << d;
+    LOGW << "double: " << d;
+    LOGE << "double: " << d;
+    LOGF << "double: " << d;
 
     // Bool
     bool b = true;
-    LOGD << "Debug value: " << b;
-    LOGI << "Info value: " << b;
-    LOGW << "Warning value: " << b;
-    LOGE << "Error value: " << b;
-    LOGF << "Fatal value: " << b;
+    LOGD << "bool: " << b;
+    LOGI << "bool: " << b;
+    LOGW << "bool: " << b;
+    LOGE << "bool: " << b;
+    LOGF << "bool: " << b;
 
     // String
     string str = "Test string";
-    LOGD << "Debug value: " << str;
-    LOGI << "Info value: " << str;
-    LOGW << "Warning value: " << str;
-    LOGE << "Error value: " << str;
-    LOGF << "Fatal value: " << str;
+    LOGD << "string: " << str;
+    LOGI << "string: " << str;
+    LOGW << "string: " << str;
+    LOGE << "string: " << str;
+    LOGF << "string: " << str;
 
     // Thread
     std::thread t1(testThread, "Test thread");

@@ -1,22 +1,42 @@
 #pragma once
 
-#include "LogUtils.h"
-#include <sstream>
+#include <ostream>
+#include <mutex>
+#include "LogLevel.h"
+#include "LogInternals.h"
 
-class LogStream
+namespace LogUtils
 {
-public:
-    explicit LogStream(LogLevel level);
-    ~LogStream();
-
-    template <typename T>
-    LogStream& operator<<(const T& value)
+    class LogStream
     {
-        mBuffer << value;
-        return *this;
-    }
+    public:
+        explicit LogStream(LogLevel level) :
+            mLevel(level) {}
 
-private:
-    LogLevel mLevel;
-    std::ostringstream mBuffer;
-};
+        ~LogStream()
+        {
+            if (mLevel < getSeverityLevel())
+                return;
+
+            static std::mutex logMutex;
+            std::lock_guard<std::mutex> lock(logMutex);
+            std::cout << getColor(mLevel)
+                    << getTimestamp() << " "
+                    << "[TID " << getThreadId() << "] "
+                    << "[" << getLabel(mLevel) << "] "
+                    << mBuffer.str()
+                    << "\033[0m" << std::endl; // RESET
+        }
+
+        template <typename T>
+        LogStream& operator<<(const T& value)
+        {
+            mBuffer << value;
+            return *this;
+        }
+
+    private:
+        LogLevel mLevel;
+        std::ostringstream mBuffer;
+    };
+}
